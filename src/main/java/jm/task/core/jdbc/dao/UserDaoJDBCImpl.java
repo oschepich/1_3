@@ -15,6 +15,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     //создания таблицы пользователей
+    @Override
     public void createUsersTable() throws SQLException {
         try (Statement statement = Util.getConnection().createStatement();) {
             statement.executeUpdate("CREATE TABLE USER(id INTEGER PRIMARY KEY not NULL AUTO_INCREMENT, name VARCHAR(45), LastName VARCHAR (50), age INT not NULL)");
@@ -27,6 +28,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     ////    удаления таблицы
+    @Override
     public void dropUsersTable() throws SQLException {
 
         try (Statement Statement = Util.getConnection().createStatement();) {
@@ -40,6 +42,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
 
     //добавлен в базу данных
+   @Override
     public void saveUser(String name, String lastName, byte age) throws SQLException {
 
         try (PreparedStatement preparedStatement = Util.getConnection().prepareStatement("INSERT INTO USER (name, LastName, age) values (?,?,?)");) {
@@ -56,6 +59,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     //удаления пользователя по id
+    @Override
     public void removeUserById(long id) throws SQLException {
 
         try (PreparedStatement preparedStatement = Util.getConnection().prepareStatement("DELETE FROM USER WHERE ID=id");) {
@@ -68,6 +72,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     //    сохранения пользователя/удаления или создания таблицы
+    @Override
     public List<User> getAllUsers() throws SQLException {
         List<User> userList = new ArrayList<>();
 
@@ -87,6 +92,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     //    Метод очищения таблицы пользователей
+    @Override
     public void cleanUsersTable() throws SQLException {
         try (Statement statement = Util.getConnection().createStatement();) {
             statement.executeUpdate("TRUNCATE USER");
