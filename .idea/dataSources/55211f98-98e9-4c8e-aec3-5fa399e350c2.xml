@@ -917,7 +917,7 @@ SELECT|sys.sys_config
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
     </column>
-    <column id="286" parent="283" name="LastName">
+    <column id="286" parent="283" name="lastName">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
     </column>
