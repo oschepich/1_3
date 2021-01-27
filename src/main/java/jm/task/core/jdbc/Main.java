@@ -1,18 +1,14 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
-import jm.task.core.jdbc.util.Util;
-
-import java.sql.*;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException {
-       UserService userService = new UserServiceImpl();
+    public static void main(String[] args) throws Exception {
+        UserService userService = new UserServiceImpl();
 //  Создание таблицы user
-       userService.createUsersTable();
+        userService.createUsersTable();
 
 //  Добавление 4 user в таблицу
         userService.saveUser("Пуфик", "Манукян", (byte) 33);
@@ -23,14 +19,17 @@ public class Main {
 //  Вывод всех узеров из таблицы в консоль
         System.out.println(userService.getAllUsers().toString());
 
-//  Очитка таблицы
-       userService.cleanUsersTable();
+//        очистка строки по id
+        userService.removeUserById(3);
+
+//         Очитка таблицы
+        userService.cleanUsersTable();
 
 //  Удаление таблицы из БД
-//       userService.dropUsersTable();
+        userService.dropUsersTable();
 
-//        Util.getSessionFactory().close();
-//   userService.removeUserById(3);
+
+
 
     }
 
