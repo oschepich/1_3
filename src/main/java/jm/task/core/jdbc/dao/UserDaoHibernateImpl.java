@@ -34,7 +34,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             session.createSQLQuery("DROP TABLE TEST_USER").executeUpdate();
         } catch (Exception e) {
-            System.out.println("Таблицы такой не существует");;
+            System.out.println("Таблицы такой не существует");
         }
     }
 
@@ -48,10 +48,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.getTransaction().commit();
         } catch (HibernateException throwables) {
             throwables.printStackTrace();
-
         }
-
-
     }
 
     //удаления пользователя по id
@@ -70,10 +67,10 @@ public class UserDaoHibernateImpl implements UserDao {
     // сохранение всех пользователей таблицы
     @Override
     public List<User> getAllUsers() {
-        List <User> user = new ArrayList<>();
+        List<User> user = new ArrayList<>();
         try (Session session = factory.openSession()) {
             session.beginTransaction();
-            user = session.createQuery("FROM User",User.class).list();
+            user = session.createQuery("FROM User", User.class).list();
             session.getTransaction().commit();
         } catch (Exception throwables) {
             throwables.printStackTrace();

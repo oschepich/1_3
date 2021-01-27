@@ -27,10 +27,6 @@ public class Main {
 
 //  Удаление таблицы из БД
         userService.dropUsersTable();
-
-
-
-
     }
 
 }
